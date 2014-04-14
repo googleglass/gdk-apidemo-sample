@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <!-- The voice trigger used for launching general demos. -->
+    <string name="voice_trigger">show me a demo</string>
+    <string name="app_name">API Demos</string>
+
+    <!-- Used for api cards to describe which API example will be triggered. -->
+    <string name="text_cards">Card API examples</string>
+    <string name="text_gesture_detector">GestureDetector API examples</string>
+    <string name="text_theming">Theming examples</string>
+
+    <!-- Used for past view cards to describe which example will be triggered. -->
+    <string name="text_full_images_layout_card">This is full layout image format.</string>
+    <string name="text_left_images_layout_card">This is left layout image format. Also, the text size will adjust dynamically.</string>
+
+    <!-- Used for cards that describe which gesture detector demo will be triggered. -->
+    <string name="discrete_gestures">Discrete gestures</string>
+    <string name="continuous_gestures">Continuous (scrolling) gestures</string>
+
+    <!-- Used by the discrete and continuous touchpad gesture demos. -->
+    <string name="last_gesture">Last gesture</string>
+    <string name="finger_count">Finger count</string>
+    <string name="scrolling">Scroll type</string>
+    <string name="displacement">Displacement</string>
+    <string name="delta">Delta</string>
+    <string name="velocity">Velocity</string>
+    <string name="scroll_one_finger">One-finger</string>
+    <string name="scroll_two_finger">Two-finger</string>
+    <string name="pixel_distance_units">%1$.0f px</string>
+    <string name="pixel_velocity_units">%1$.3f px/s</string>
+    <string name="swipe_down_again">Swipe down again to go back</string>
+
+    <!-- Used by the theming demos. -->
+    <string name="text_large">Lorem ipsum dolor sit ameti,</string>
+    <string name="text_medium">consectetur adipiscing elit. Aliquam mollis fringilla ultrices.</string>
+    <string name="text_small">Vivamus ultricies velit nunc, id ornare elit rhoncus id. Cras felis est, fringilla sed nisi non, pulvinar vulputate ante.</string>
+
+    <string name="text_large_specification"> Roboto-thin, 70px</string>
+    <string name="text_medium_specification"> Roboto-thin, 40px</string>
+    <string name="text_small_specification"> Roboto-light, 26px</string>
+
+    <!-- Used by the OpengGL LiveCard demo. -->
+    <string name="stop">stop</string>
+    <string name="text_opengl">OpenGL LiveCard example</string>
+
+</resources>
