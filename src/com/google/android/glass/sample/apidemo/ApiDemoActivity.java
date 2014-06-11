@@ -23,6 +23,7 @@ import com.google.android.glass.sample.apidemo.card.CardAdapter;
 import com.google.android.glass.sample.apidemo.opengl.OpenGlService;
 import com.google.android.glass.sample.apidemo.theming.ThemingActivity;
 import com.google.android.glass.sample.apidemo.touchpad.SelectGestureDemoActivity;
+import com.google.android.glass.sample.apidemo.voicemenu.VoiceMenuActivity;
 import com.google.android.glass.widget.CardScrollAdapter;
 import com.google.android.glass.widget.CardScrollView;
 
@@ -46,6 +47,7 @@ import java.util.List;
  * <li> GestureDetector
  * <li> textAppearance[Large|Medium|Small]
  * <li> OpenGL LiveCard
+ * <li> VoiceMenu
  * </ol>
  */
 public class ApiDemoActivity extends Activity {
@@ -58,6 +60,7 @@ public class ApiDemoActivity extends Activity {
     static final int GESTURE_DETECTOR = 1;
     static final int THEMING = 2;
     static final int OPENGL = 3;
+    static final int VOICE_MENU = 4;
 
     private CardScrollAdapter mAdapter;
     private CardScrollView mCardScroller;
@@ -87,6 +90,7 @@ public class ApiDemoActivity extends Activity {
         cards.add(GESTURE_DETECTOR, new Card(context).setText(R.string.text_gesture_detector));
         cards.add(THEMING, new Card(context).setText(R.string.text_theming));
         cards.add(OPENGL, new Card(context).setText(R.string.text_opengl));
+        cards.add(VOICE_MENU, new Card(context).setText(R.string.text_voice_menu));
         return cards;
     }
 
@@ -128,6 +132,10 @@ public class ApiDemoActivity extends Activity {
 
                     case OPENGL:
                         startService(new Intent(ApiDemoActivity.this, OpenGlService.class));
+                        break;
+
+                    case VOICE_MENU:
+                        startActivity(new Intent(ApiDemoActivity.this, VoiceMenuActivity.class));
                         break;
 
                     default:

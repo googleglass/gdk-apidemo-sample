@@ -24,6 +24,7 @@
     <string name="text_cards">Card API examples</string>
     <string name="text_gesture_detector">GestureDetector API examples</string>
     <string name="text_theming">Theming examples</string>
+    <string name="text_voice_menu">Voice menu</string>
 
     <!-- Used for past view cards to describe which example will be triggered. -->
     <string name="text_full_images_layout_card">This is full layout image format.</string>
@@ -58,5 +59,19 @@
     <!-- Used by the OpengGL LiveCard demo. -->
     <string name="stop">stop</string>
     <string name="text_opengl">OpenGL LiveCard example</string>
+
+    <!-- Used to build a voice menu. -->
+    <string name="menu_designer">Pick a designer</string>
+    <string name="menu_coder">Pick a coder</string>
+    <string name="menu_coder1">Alfa</string>
+    <string name="menu_coder2">Bravo</string>
+    <string name="menu_coder3">Charlie</string>
+    <string name="menu_coder4">Delta</string>
+    <string name="menu_coder5">Echo</string>
+    <string name="menu_product">Pick a product manager</string>
+
+    <string name="voice_menu_explanation">
+        Sample voice menu activity. Tap to toggle voice menu.
+    </string>
 
 </resources>
