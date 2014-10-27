@@ -43,7 +43,15 @@
                 />
         </activity>
 
-        <activity android:name=".card.CardsActivity"
+        <activity android:name=".card.CardBuilderActivity"
+            android:exported="true"
+            />
+
+        <activity android:name=".card.EmbeddedCardLayoutActivity"
+            android:exported="true"
+            />
+
+        <activity android:name=".card.CardScrollViewActivity"
             android:exported="true"
             />
 
@@ -59,7 +67,7 @@
             android:exported="true"
             />
 
-        <activity android:name=".theming.ThemingActivity"
+        <activity android:name=".theming.TextAppearanceActivity"
             android:exported="true"
             />
 
@@ -74,6 +82,10 @@
             />
 
         <activity android:name=".voicemenu.VoiceMenuActivity"
+            android:exported="true"
+            />
+
+        <activity android:name=".slider.SliderActivity"
             android:exported="true"
             />
 

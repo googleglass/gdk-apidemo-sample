@@ -18,6 +18,7 @@
 
     <color name="touchpad_background_color">#444444</color>
     <color name="divider_color">#444444</color>
+    <color name="muted_text">#808080</color>
 
     <!-- Preferred Glass red/yellow/green hues and their half-bright variants, used for outlining
          and filling the finger spots in the touchpad view. -->

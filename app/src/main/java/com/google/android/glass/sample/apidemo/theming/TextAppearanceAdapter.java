@@ -26,25 +26,19 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 /**
- * Adapter class that handles list of ThemeCards that maintains its own Layouts.
+ * Adapter class that displays examples of the default textAppearance styles on Glass.
  */
-public class LayoutAdapter extends CardScrollAdapter {
+public class TextAppearanceAdapter extends CardScrollAdapter {
 
-    enum ThemeCards {
-        LARGE(0, R.layout.text_appearances_large),
-        MEDIUM(1, R.layout.text_appearances_medium),
-        SMALL(2, R.layout.text_appearances_small);
+    enum TextAppearanceLayout {
+        LARGE(R.layout.text_appearances_large),
+        MEDIUM(R.layout.text_appearances_medium),
+        SMALL(R.layout.text_appearances_small);
 
-        private final int mPos;
         private final int mResid;
 
-        ThemeCards(int pos, int resid) {
-            mPos = pos;
+        TextAppearanceLayout(int resid) {
             mResid = resid;
-        }
-
-        int getPosition() {
-            return mPos;
         }
 
         int getResourceID() {
@@ -54,18 +48,18 @@ public class LayoutAdapter extends CardScrollAdapter {
 
     private LayoutInflater mInflater;
 
-    public LayoutAdapter(Context context) {
+    public TextAppearanceAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return ThemeCards.values().length;
+        return TextAppearanceLayout.values().length;
     }
 
     @Override
-    public Object getItem(int position) {
-        return ThemeCards.values()[position];
+    public TextAppearanceLayout getItem(int position) {
+        return TextAppearanceLayout.values()[position];
     }
 
     @Override
@@ -76,14 +70,14 @@ public class LayoutAdapter extends CardScrollAdapter {
         if (convertView != null) {
             view = convertView;
         } else {
-            view = mInflater.inflate(ThemeCards.values()[position].getResourceID(), null);
+            view = mInflater.inflate(getItem(position).getResourceID(), null);
         }
         return view;
     }
 
     @Override
     public int getPosition(Object item) {
-        for (int i = 0; i < ThemeCards.values().length; i++) {
+        for (int i = 0; i < TextAppearanceLayout.values().length; i++) {
             if (getItem(i).equals(item)) {
                 return i;
             }

@@ -17,10 +17,13 @@
 package com.google.android.glass.sample.apidemo;
 
 import com.google.android.glass.media.Sounds;
-import com.google.android.glass.sample.apidemo.card.CardsActivity;
 import com.google.android.glass.sample.apidemo.card.CardAdapter;
+import com.google.android.glass.sample.apidemo.card.CardBuilderActivity;
+import com.google.android.glass.sample.apidemo.card.CardScrollViewActivity;
+import com.google.android.glass.sample.apidemo.card.EmbeddedCardLayoutActivity;
 import com.google.android.glass.sample.apidemo.opengl.OpenGlService;
-import com.google.android.glass.sample.apidemo.theming.ThemingActivity;
+import com.google.android.glass.sample.apidemo.slider.SliderActivity;
+import com.google.android.glass.sample.apidemo.theming.TextAppearanceActivity;
 import com.google.android.glass.sample.apidemo.touchpad.SelectGestureDemoActivity;
 import com.google.android.glass.sample.apidemo.voicemenu.VoiceMenuActivity;
 import com.google.android.glass.widget.CardBuilder;
@@ -43,7 +46,8 @@ import java.util.List;
  * Creates a card scroll view with examples of different GDK APIs.
  *
  * <ol>
- * <li> Cards
+ * <li> CardBuilder API
+ * <li> CardScrollView API
  * <li> GestureDetector
  * <li> textAppearance[Large|Medium|Small]
  * <li> OpenGL LiveCard
@@ -57,10 +61,13 @@ public class ApiDemoActivity extends Activity {
     // Index of api demo cards.
     // Visible for testing.
     static final int CARD_BUILDER = 0;
-    static final int GESTURE_DETECTOR = 1;
-    static final int THEMING = 2;
-    static final int OPENGL = 3;
-    static final int VOICE_MENU = 4;
+    static final int CARD_BUILDER_EMBEDDED_LAYOUT = 1;
+    static final int CARD_SCROLL_VIEW = 2;
+    static final int GESTURE_DETECTOR = 3;
+    static final int TEXT_APPEARANCE = 4;
+    static final int OPENGL = 5;
+    static final int VOICE_MENU = 6;
+    static final int SLIDER = 7;
 
     private CardScrollAdapter mAdapter;
     private CardScrollView mCardScroller;
@@ -87,15 +94,21 @@ public class ApiDemoActivity extends Activity {
     private List<CardBuilder> createCards(Context context) {
         ArrayList<CardBuilder> cards = new ArrayList<CardBuilder>();
         cards.add(CARD_BUILDER, new CardBuilder(context, CardBuilder.Layout.TEXT)
-                .setText(R.string.text_cards));
+                .setText(R.string.text_card_builder));
+        cards.add(CARD_BUILDER_EMBEDDED_LAYOUT, new CardBuilder(context, CardBuilder.Layout.TEXT)
+                .setText(R.string.text_card_builder_embedded_layout));
+        cards.add(CARD_SCROLL_VIEW, new CardBuilder(context, CardBuilder.Layout.TEXT)
+                .setText(R.string.text_card_scroll_view));
         cards.add(GESTURE_DETECTOR, new CardBuilder(context, CardBuilder.Layout.TEXT)
                 .setText(R.string.text_gesture_detector));
-        cards.add(THEMING, new CardBuilder(context, CardBuilder.Layout.TEXT)
-                .setText(R.string.text_theming));
+        cards.add(TEXT_APPEARANCE, new CardBuilder(context, CardBuilder.Layout.TEXT)
+                .setText(R.string.text_text_appearance));
         cards.add(OPENGL, new CardBuilder(context, CardBuilder.Layout.TEXT)
                 .setText(R.string.text_opengl));
         cards.add(VOICE_MENU, new CardBuilder(context, CardBuilder.Layout.TEXT)
                 .setText(R.string.text_voice_menu));
+        cards.add(SLIDER, new CardBuilder(context, CardBuilder.Layout.TEXT)
+                .setText(R.string.text_slider));
         return cards;
     }
 
@@ -123,7 +136,17 @@ public class ApiDemoActivity extends Activity {
                 int soundEffect = Sounds.TAP;
                 switch (position) {
                     case CARD_BUILDER:
-                        startActivity(new Intent(ApiDemoActivity.this, CardsActivity.class));
+                        startActivity(new Intent(ApiDemoActivity.this, CardBuilderActivity.class));
+                        break;
+
+                    case CARD_BUILDER_EMBEDDED_LAYOUT:
+                        startActivity(new Intent(
+                                ApiDemoActivity.this, EmbeddedCardLayoutActivity.class));
+                        break;
+
+                    case CARD_SCROLL_VIEW:
+                        startActivity(new Intent(ApiDemoActivity.this,
+                                CardScrollViewActivity.class));
                         break;
 
                     case GESTURE_DETECTOR:
@@ -131,8 +154,9 @@ public class ApiDemoActivity extends Activity {
                                 SelectGestureDemoActivity.class));
                         break;
 
-                    case THEMING:
-                        startActivity(new Intent(ApiDemoActivity.this, ThemingActivity.class));
+                    case TEXT_APPEARANCE:
+                        startActivity(new Intent(ApiDemoActivity.this,
+                                TextAppearanceActivity.class));
                         break;
 
                     case OPENGL:
@@ -141,6 +165,10 @@ public class ApiDemoActivity extends Activity {
 
                     case VOICE_MENU:
                         startActivity(new Intent(ApiDemoActivity.this, VoiceMenuActivity.class));
+                        break;
+
+                    case SLIDER:
+                        startActivity(new Intent(ApiDemoActivity.this, SliderActivity.class));
                         break;
 
                     default:

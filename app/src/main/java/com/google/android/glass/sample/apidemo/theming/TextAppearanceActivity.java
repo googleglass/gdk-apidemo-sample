@@ -22,9 +22,9 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Creates a card scroll view with examples of different image layout cards.
+ * Creates a card scroll view with examples of the default textAppearance styles on Glass.
  */
-public final class ThemingActivity extends Activity {
+public final class TextAppearanceActivity extends Activity {
 
     private CardScrollView mCardScroller;
 
@@ -32,7 +32,7 @@ public final class ThemingActivity extends Activity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         mCardScroller = new CardScrollView(this);
-        mCardScroller.setAdapter(new LayoutAdapter(this));
+        mCardScroller.setAdapter(new TextAppearanceAdapter(this));
         setContentView(mCardScroller);
     }
 

@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class CardAdapter extends CardScrollAdapter {
 
-    private final List<CardBuilder> mCards;
+    final List<CardBuilder> mCards;
 
     public CardAdapter(List<CardBuilder> cards) {
         mCards = cards;
@@ -69,13 +69,5 @@ public class CardAdapter extends CardScrollAdapter {
             }
         }
         return AdapterView.INVALID_POSITION;
-    }
-
-    /**
-     * A non-adapter method to append a card at the end without notifying the adapter
-     * of the data change yet ({@link #notifyDataSetChanged}).
-     */
-    public void appendCardWithoutNotification(CardBuilder card) {
-        mCards.add(card);
     }
 }

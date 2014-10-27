@@ -14,26 +14,33 @@
      limitations under the License.
 -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linear_layout"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/card_margin"
+    android:layout_height="wrap_content"
+    android:baselineAligned="true"
+    android:orientation="horizontal"
+    android:background="@drawable/table_row_divider"
+    android:paddingTop="2px"
+    android:paddingBottom="6px"
     >
-    <TextView
-        android:id="@+id/text_appearanceMedium"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_medium"
+        android:layout_marginRight="8px"
+        android:baselineAlignBottom="true"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
         android:textAppearance="?android:attr/textAppearanceMedium"
         />
-    <!-- Default textAppearance is set to textAppearanceMedium -->
     <TextView
-        android:id="@+id/text_appearanceMedium_specification"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_medium_specification"
+        android:layout_marginLeft="8px"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/muted_text"
         />
 </LinearLayout>

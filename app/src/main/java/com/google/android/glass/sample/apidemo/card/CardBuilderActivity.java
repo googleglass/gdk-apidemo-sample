@@ -16,18 +16,13 @@
 
 package com.google.android.glass.sample.apidemo.card;
 
-import com.google.android.glass.media.Sounds;
 import com.google.android.glass.sample.apidemo.R;
-import com.google.android.glass.view.WindowUtils;
 import com.google.android.glass.widget.CardBuilder;
 import com.google.android.glass.widget.CardScrollView;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.AudioManager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,42 +30,16 @@ import java.util.List;
 /**
  * Creates a card scroll view with examples of different image layout cards.
  */
-public final class CardsActivity extends Activity {
+public final class CardBuilderActivity extends Activity {
 
-    private CardAdapter mAdapter;
     private CardScrollView mCardScroller;
-
-    private int mTapPosition;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        mAdapter = new CardAdapter(createCards(this));
         mCardScroller = new CardScrollView(this);
-        mCardScroller.setAdapter(mAdapter);
-        setupClickListener();
+        mCardScroller.setAdapter(new CardAdapter(createCards(this)));
         setContentView(mCardScroller);
-    }
-
-    /**
-     * Sets up click listener.
-     */
-    private void setupClickListener() {
-        mCardScroller.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-                if (position == mTapPosition) {
-                    // Clicking on this card inserts a new card at the end.
-                    am.playSoundEffect(Sounds.TAP);
-                    insertNewCardAtEnd();
-                } else {
-                    // Clicking on any other card is not allowed.
-                    am.playSoundEffect(Sounds.DISALLOWED);
-                }
-            }
-        });
     }
 
     /**
@@ -83,57 +52,62 @@ public final class CardsActivity extends Activity {
         cards.add(new CardBuilder(context, CardBuilder.Layout.TEXT)
                 .setText(R.string.text_card_text_not_fixed)
                 .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
+                .setTimestamp(R.string.text_card_timestamp)
+                .setAttributionIcon(R.drawable.ic_smile));
         cards.add(createCardWithImages(context, CardBuilder.Layout.TEXT)
                 .setText(R.string.text_card_text_with_images)
                 .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
+                .setTimestamp(R.string.text_card_timestamp)
+                .setAttributionIcon(R.drawable.ic_smile));
         cards.add(new CardBuilder(context, CardBuilder.Layout.TEXT_FIXED)
                 .setText(R.string.text_card_text_fixed)
                 .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
-
-        // Action card. Tapping on this card will insert a new card at the end.
-        mTapPosition = cards.size();
+                .setTimestamp(R.string.text_card_timestamp)
+                .setAttributionIcon(R.drawable.ic_smile));
         cards.add(new CardBuilder(context, CardBuilder.Layout.TEXT)
-                .setText(R.string.text_card_tap_to_insert)
-                .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
+                .setText(R.string.text_card_text_stack_indicator)
+                .showStackIndicator(true)
+                .setAttributionIcon(R.drawable.ic_smile));
 
         // Add cards that demonstrate COLUMNS layouts.
         cards.add(createCardWithImages(context, CardBuilder.Layout.COLUMNS)
                 .setText(R.string.text_card_columns_not_fixed)
                 .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
+                .setTimestamp(R.string.text_card_timestamp)
+                .setAttributionIcon(R.drawable.ic_smile));
         cards.add(new CardBuilder(context, CardBuilder.Layout.COLUMNS)
                 .setText(R.string.text_card_columns_with_icon)
                 .setIcon(R.drawable.ic_wifi_150)
                 .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
+                .setTimestamp(R.string.text_card_timestamp)
+                .setAttributionIcon(R.drawable.ic_smile));
         cards.add(createCardWithImages(context, CardBuilder.Layout.COLUMNS)
                 .setText(R.string.text_card_columns_fixed)
                 .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
+                .setTimestamp(R.string.text_card_timestamp)
+                .setAttributionIcon(R.drawable.ic_smile));
 
         // Add cards that demonstrate CAPTION layouts.
         cards.add(new CardBuilder(context, CardBuilder.Layout.CAPTION)
                 .addImage(R.drawable.beach)
                 .setText(R.string.text_card_caption)
                 .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
+                .setTimestamp(R.string.text_card_timestamp)
+                .setAttributionIcon(R.drawable.ic_smile));
         cards.add(new CardBuilder(context, CardBuilder.Layout.CAPTION)
                 .addImage(R.drawable.beach)
                 .setText(R.string.text_card_caption_with_icon)
                 .setIcon(R.drawable.ic_avatar_70)
                 .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
+                .setTimestamp(R.string.text_card_timestamp)
+                .setAttributionIcon(R.drawable.ic_smile));
 
         // Add cards that demonstrate TITLE layouts.
         cards.add(new CardBuilder(context, CardBuilder.Layout.TITLE)
-                .addImage(R.drawable.codemonkey1)
+                .addImage(R.drawable.beach)
                 .setText(R.string.text_card_title));
         cards.add(new CardBuilder(context, CardBuilder.Layout.TITLE)
-                .addImage(R.drawable.codemonkey1)
+                .addImage(R.drawable.beach)
                 .setText(R.string.text_card_title_icon)
                 .setIcon(R.drawable.ic_phone_50));
 
@@ -156,7 +130,8 @@ public final class CardsActivity extends Activity {
                 .setHeading(R.string.text_card_author_heading)
                 .setSubheading(R.string.text_card_author_subheading)
                 .setFootnote(R.string.text_card_footnote)
-                .setTimestamp(R.string.text_card_timestamp));
+                .setTimestamp(R.string.text_card_timestamp)
+                .setAttributionIcon(R.drawable.ic_smile));
 
         return cards;
     }
@@ -172,23 +147,10 @@ public final class CardsActivity extends Activity {
         card.addImage(R.drawable.codemonkey3);
         card.addImage(R.drawable.codemonkey4);
         card.addImage(R.drawable.codemonkey5);
+        card.addImage(R.drawable.codemonkey6);
+        card.addImage(R.drawable.codemonkey7);
+        card.addImage(R.drawable.codemonkey8);
         return card;
-    }
-
-    /**
-     * Inserts a new card at the end using proper insertion animation
-     * (the card scroller will animate to the new card).
-     */
-    private void insertNewCardAtEnd() {
-        // Insert new card in the adapter, but don't call notifyDataSetChanged()
-        // yet. Instead, request proper animation to inserted card from card scroller,
-        // which will notify the adapter at the right time during the animation.
-        int newPosition = mAdapter.getCount();
-        CardBuilder card = new CardBuilder(this, CardBuilder.Layout.COLUMNS)
-                .addImage(R.drawable.codemonkey3)
-                .setText("New card at position " + newPosition);
-        mAdapter.appendCardWithoutNotification(card);
-        mCardScroller.animate(newPosition, CardScrollView.Animation.INSERTION);
     }
 
     @Override
