@@ -23,3 +23,15 @@ on the command line:
 
 To start the sample, say "ok glass, show me a demo" from the Glass clock
 screen or use the touch menu.
+
+## Notices for Linux users
+
+The Android SDK build tools ship outdated 32bit binaries in version
+20.0.0. Users of modern Linux kernels in 64bit mode might need to install
+additional libraries to run the build tools. In particular, this is:
+
+- `util-linux` (32bit)
+- `clang` (32bit)
+- `zstd` (32bit)
+- `zlib` (32bit)
+
